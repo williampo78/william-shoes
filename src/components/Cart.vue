@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-sidebar id="sidebar-right" title="您的商品" right shadow>
+    <b-sidebar id="sidebar-right" title="您的商品" right shadow backdrop>
        <template #footer="{ hide }">
        <div class="d-flex bg-dark text-light align-items-center px-3 py-2">
         <strong class="mr-auto">總計: {{totalPrice}} 元</strong>
