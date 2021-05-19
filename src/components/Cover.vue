@@ -2,7 +2,7 @@
   <div id="cover">
     <!-- <img id="cover-img" src="@/assets/images/shoes.jpg" alt="" /> -->
     <h1 id="cover-title">最新潮流款式</h1>
-    <a href="#" v-scroll-to="'#container'">
+    <a href="#" v-scroll-to="'h3'">
       <button id="jump">立即購買</button>
     </a>
   </div>
@@ -21,6 +21,7 @@ export default {};
   background: url(../assets/images/shoes.jpg);
   background-size: cover;
   background-position: 25%;
+  margin-bottom: 5rem;
 }
 #cover-img {
   width: 100%;

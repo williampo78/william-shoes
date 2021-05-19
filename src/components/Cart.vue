@@ -1,10 +1,25 @@
 <template>
   <div>
     <b-sidebar id="sidebar-right" title="您的商品" right shadow backdrop>
+        <h2 v-if="cartProducts.length==0">您的購物車還沒有商品</h2>
        <template #footer="{ hide }">
        <div class="d-flex bg-dark text-light align-items-center px-3 py-2">
-        <strong class="mr-auto">總計: {{totalPrice}} 元</strong>
-        <b-button size="sm" @click="hide">結帳</b-button>
+          <strong class="mr-auto">總計: {{totalPrice}} 元</strong>
+         <!-- <b-button size="sm" @click="hide">結帳</b-button> -->
+          <div>
+            <b-button v-if="cartProducts.length!=0" id="show-btn" @click="$bvModal.show('bv-modal-example')" v-on:click="hide">結帳</b-button>
+            <b-button disabled v-if="cartProducts.length==0" id="show-btn" @click="$bvModal.show('bv-modal-example')" v-on:click="hide">結帳</b-button>
+
+            <b-modal id="bv-modal-example" hide-header-close hide-footer no-close-on-backdrop>
+            <template #modal-title>
+              已結帳成功!
+            </template>
+            <div class="d-block text-center">
+              <h3>共 {{totalPrice}} 元</h3>
+            </div>
+            <b-button class="mt-3" v-on:click="clearCart" block @click="$bvModal.hide('bv-modal-example')">確認</b-button>
+            </b-modal>
+        </div>
        </div>
       </template>
       <div  v-for="(cartProduct,index) in cartProducts" :key="index" class="px-3 py-2">
@@ -29,7 +44,7 @@
 export default {
   data(){
     return{
-
+      
     }
   },
   props:{
@@ -41,7 +56,7 @@ export default {
   },
   computed:{
     totalPrice(){
-      let total=0;
+      let total =0;
       for(let i=0; i<this.cartProducts.length; i++){
         total += this.cartProducts[i].price*this.cartProducts[i].quantity
       }
@@ -64,11 +79,15 @@ export default {
     },
     checkOut(){
       alert(this.total)
+    },
+    clearCart(){
+      this.cartProducts.splice(0,this.cartProducts.length)   
+      }
     }
       
-    },
+    }
   
-}
+
 </script>
 
 <style scoped>
@@ -97,6 +116,9 @@ export default {
   margin-left: 1rem;
   font-size: 1rem;
 }
+#delete:hover{
+  color:rgb(207, 25, 25);
+}
 .change-quantity{
   width:30px;
   height:30px;
@@ -111,7 +133,10 @@ export default {
   margin:0rem 1rem;
   justify-self: end;
 }
-/* #price{
-  color:#bf1e2b;
-} */
+h2{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 30vh;
+
+}
 </style>
