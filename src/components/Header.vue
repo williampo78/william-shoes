@@ -44,6 +44,7 @@ h1{
     background-color:#FFF;
     color:#517563;
     padding:0;
+    outline: none !important;
 }
 
 /* #b-button:hover{

@@ -130,6 +130,7 @@ h3{
   border:none;
   border-radius: 50px;
   margin:0.5rem;
+  outline: none !important;
 
 }
 #product-box{
