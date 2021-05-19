@@ -58,7 +58,7 @@ export default {
   },
    methods:{
     addInCart(index){
-      this.currentProduct = this.products[index]
+      this.currentProduct = this.shoesFilter[index]
       this.cartProducts.push(this.currentProduct)
       console.log(this.currentProduct)
        }
